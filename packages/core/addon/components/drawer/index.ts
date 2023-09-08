@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { htmlSafe } from '@ember/string';
+import { htmlSafe } from '@ember/template';
 
 import * as Classes from '../../_private/common/classes';
 import * as posFun from '../../_private/common/position';
@@ -90,7 +90,9 @@ export default class Drawer extends Component<DrawerArgs> {
     const realPosition = this.realPosition();
     const vertical = this.findVertical();
     const verticalClass = !realPosition && vertical ? this.VERTICAL : '';
-    const realPositionClass = realPosition ? Classes.positionClass(realPosition) : '';
+    const realPositionClass = realPosition
+      ? Classes.positionClass(realPosition)
+      : '';
 
     return `${verticalClass} ${realPositionClass} ${className}`;
   }
@@ -112,7 +114,9 @@ export default class Drawer extends Component<DrawerArgs> {
     const realPosition = this.realPosition();
     const size = this.findSize();
     const styleName = (
-      realPosition ? posFun.isPositionHorizontal(realPosition) : this.findVertical()
+      realPosition
+        ? posFun.isPositionHorizontal(realPosition)
+        : this.findVertical()
     )
       ? 'height'
       : 'width';

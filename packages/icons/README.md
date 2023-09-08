@@ -1,22 +1,25 @@
-# icons
+![Logo](https://github.com/ember-elements/ember-elements/blob/main/packages/core/tests/dummy/public/ember-elements.png?raw=true)
 
-[Short description of the addon.]
+# @ember-elements/icons
+
+**Ember Elements** is a UI toolkit built with Typescript and made available as an **Ember addon**. It is based on the awesome **[Blueprint design system](https://blueprintjs.com/docs)**.
+
+This package contains a collection of files for displaying icons.
+
 
 ## Compatibility
 
-- Ember.js v3.4 or above
-- Ember CLI v2.13 or above
-- Node.js v8 or above
+* Ember.js v4.4 or above
+* Ember CLI v4.4 or above
+* Node.js v16 or above
+
 
 ## Installation
 
 ```
-ember install icons
+ember install @ember-elements/icons
 ```
 
-## Usage
-
-[Longer description of how to use the addon in apps.]
 
 ## Contributing
 

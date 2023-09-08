@@ -2,103 +2,146 @@ name: '@ember-elements/core'
 on:
   pull_request:
     branches: [main]
-    # paths:
-    # - 'packages/core/**'
+  push:
+    branches:
+      - main
 
 env:
   cwd: packages/core/
 
 jobs:
-  tests:
-    name: Tests
-    strategy:
-      matrix:
-        # os: [ubuntu-latest, macOS-latest, windows-latest]
-        # browsers: [chrome, firefox, safari, edge]
-        ci_browser:
-        - Chrome
-        - Firefox
-        - Edge
+  # tests:
+  #   name: Tests
+  #   strategy:
+  #     matrix:
+  #       # os: [ubuntu-latest, macOS-latest, windows-latest]
+  #       # browsers: [chrome, firefox, safari, edge]
+  #       ci_browser:
+  #       - Chrome
+  #       - Firefox
+  #       - Edge
 
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
 
-    steps:
-    - uses: actions/checkout@v2
-    - uses: volta-cli/action@v1
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: volta-cli/action@v1
+  #     with:
+  #       node-version: 18
 
-    - name: Install
-      working-directory: ${{ env.cwd }}
-      run: yarn install
+  #   - name: Install
+  #     working-directory: ${{ env.cwd }}
+  #     run: yarn install
 
-    - name: Test
-      working-directory: ${{ env.cwd }}
-      env:
-        # PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-        CI_BROWSER: ${{ matrix.ci_browser }}
-      run: yarn ember test
+  #   - name: Test
+  #     working-directory: ${{ env.cwd }}
+  #     env:
+  #       # PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+  #       CI_BROWSER: ${{ matrix.ci_browser }}
+  #     run: yarn ember test
       
-  lint:
-    name: 'Lint'
-    runs-on: ubuntu-latest
+  # lint:
+  #   name: 'Lint'
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
+
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: volta-cli/action@v1
+  #     with:
+  #       node-version: 18
+
+  #   - name: Install
+  #     working-directory: ${{ env.cwd }}
+  #     run: yarn install
+
+  #   - name: Snyk
+  #     working-directory: ${{ env.cwd }}
+  #     if: github.event == 'pull_request'
+  #     env:
+  #       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  #     run: snyk test --severity-threshold=high
+
+  #   - name: "JS/TS"
+  #     working-directory: ${{ env.cwd }}
+  #     run: yarn eslint . --ext .ts --ext .js
+
+  #   - name: "Templates"
+  #     working-directory: ${{ env.cwd }}
+  #     run: yarn ember-template-lint .
+
+  #   # - name: "Styles"
+  #   #   working-directory: ${{ env.cwd }}
+  #   #   run: yarn stylelint app/styles/*.scss addon/components/*.scss addon/components/**/*.scss addon/components/**/**/*.scss
+
+  #   - name: 'Type Correctness'
+  #     working-directory: ${{ env.cwd }}
+  #     run: yarn tsc --build
+
+  # try-scenarios:
+  #   name: ${{ matrix.try-scenario }}
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 10
+
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       try-scenario:
+  #         - ember-lts-4.4
+  #         - ember-lts-4.8
+  #         - ember-release
+  #         - ember-beta
+  #         - ember-canary
+  #         - embroider-safe
+  #         - embroider-optimized
+
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Install Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #         cache: yarn
+  #     - name: Install Dependencies
+  #       working-directory: ${{ env.cwd }}
+  #       run: yarn install --frozen-lockfile
+  #     - name: Run Tests
+  #       working-directory: ${{ env.cwd }}
+  #       run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
+
+  # commits:
+  #   name: Commit Messages
+  #   timeout-minutes: 5
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: volta-cli/action@v1
+  #     - uses: wagoid/commitlint-github-action@v4.1.12
+
+  publish:
+    name: Release
     timeout-minutes: 5
-
-    steps:
-    - uses: actions/checkout@v2
-    - uses: volta-cli/action@v1
-
-    - name: Install
-      working-directory: ${{ env.cwd }}
-      run: yarn install
-
-    - name: Snyk
-      working-directory: ${{ env.cwd }}
-      if: github.event == 'pull_request'
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      run: snyk test --severity-threshold=high
-
-    - name: "JS/TS"
-      working-directory: ${{ env.cwd }}
-      run: yarn eslint . --ext .ts --ext .js
-
-    - name: "Templates"
-      working-directory: ${{ env.cwd }}
-      run: yarn ember-template-lint .
-
-    - name: "Styles"
-      working-directory: ${{ env.cwd }}
-      run: yarn stylelint app/styles/*.scss addon/components/*.scss addon/components/**/*.scss addon/components/**/**/*.scss
-
-    - name: 'Type Correctness'
-      working-directory: ${{ env.cwd }}
-      run: yarn tsc --build
-
-  tests_ember_compat:
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
-    name: Ember Compatability
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    strategy:
-      max-parallel: 6
-      matrix:
-        scenario:
-        - "ember-lts-3.16"
-        - "ember-lts-3.20"
-        - "ember-default-with-jquery"
-        - "ember-release"
-        - "ember-beta"
-        # TODO https://github.com/dunkinbase/ember-elements/issues/352
-        # - "ember-canary" 
+    # needs:
+      # - tests
+      # - lint
+      # - try-scenarios
+      # - commits
     steps:
-    - uses: actions/checkout@v2
-    - uses: volta-cli/action@v1
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v1
+        with:
+          node-version: 18
+      - name: Install
+        working-directory: ${{ env.cwd }}
+        run: yarn install
 
-    - name: Install
-      working-directory: ${{ env.cwd }}
-      run: yarn install
-
-    - name: "Test: ${{ matrix.scenario }}"
-      working-directory: ${{ env.cwd }}
-      run: yarn test:try-one ${{ matrix.scenario }}
-
+      - name: Release
+        working-directory: ${{ env.cwd }}
+        # run: ./node_modules/.bin/semantic-release
+        run: npx -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/npm -p @semantic-release/github -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

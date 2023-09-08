@@ -122,9 +122,7 @@ export default class Tooltip extends Component<TooltipArgs> {
   }
 
   get eventListener() {
-    this.addTooltipTargetEventListeners();
-
-    return true;
+    return this.addTooltipTargetEventListeners();
   }
 
   @action

@@ -1,8 +1,0 @@
-# Ignore supporting directories to improve scan time
-/dummy/
-/dist/
-/node_modules/
-/tmp/
-/public/
-/vendor/
-

@@ -135,6 +135,10 @@ jobs:
       - uses: volta-cli/action@v1
         with:
           node-version: 18
+      - name: Install
+        working-directory: ${{ env.cwd }}
+        run: yarn install
+
       - name: Release
         working-directory: ${{ env.cwd }}
         run: ./node_modules/.bin/semantic-release

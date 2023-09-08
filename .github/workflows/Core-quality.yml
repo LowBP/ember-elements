@@ -136,7 +136,7 @@ jobs:
         with:
           node-version: 18
       - name: Release
-        run: ./node_modules/.bin/semantic-release
         working-directory: ${{ env.cwd }}
+        run: ./node_modules/.bin/semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

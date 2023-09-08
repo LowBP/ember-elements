@@ -175,7 +175,7 @@
   },
 "release": {
       "branches": [
-        "*"
+        "main"
       ]
 },
   "readme": "ERROR: No README data found!",

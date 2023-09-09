@@ -125,7 +125,7 @@ jobs:
     name: Release
     timeout-minutes: 5
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     # needs:
       # - tests
       # - lint

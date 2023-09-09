@@ -1,5 +1,5 @@
 {
-  "name": "@ember-elements/icons",
+  "name": "@ember-elements/icons12",
   "version": "0.0.3",
   "description": "Fonts, icons, and css files for creating and displaying icons.",
   "keywords": [
@@ -15,11 +15,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ember-elements/ember-elements.git",
+    "url": "git+https://github.com/LowBP/ember-elements.git",
     "directory": "packages/icons"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "license": "MIT",
   "author": "Ember Elements",
@@ -139,6 +136,15 @@
     "configPath": "tests/dummy/config"
   },
   "bugs": {
-    "url": "https://github.com/ember-elements/ember-elements/issues"
+    "url": "https://github.com/LowBP/ember-elements/issues"
+  },
+ "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

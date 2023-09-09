@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn workspace @ember-elements/core12 lint
-yarn workspace @ember-elements/icons12 lint
+yarn workspace @ember-elements/core123 lint
+yarn workspace @ember-elements/icons123 lint
 yarn commitlint --edit $1

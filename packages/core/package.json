@@ -1,6 +1,6 @@
 {
   "name": "@ember-elements/core123",
-  "version": "0.0.1",
+  "version": "1.0.5",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -204,6 +204,5 @@
     "registry": "https://registry.npmjs.org/"
   },
   "readme": "ERROR: No README data found!",
-  "homepage": "https://github.com/LowBP/ember-elements#readme",
-  "_id": "@ember-elements/core@0.8.0"
+  "homepage": "https://github.com/LowBP/ember-elements#readme"
 }

@@ -143,7 +143,7 @@ jobs:
 
       - name: Release
         working-directory: ${{ env.cwd }}
-        run: npx -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/npm -p @semantic-release/github -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release --tagFormat '@ember-elements/core@${version}' --changelogFile 'CHANGELOG.md'
+        run: npx -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/npm -p @semantic-release/github -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release --tagFormat '@ember-elements/core1@${version}' --changelogFile 'CHANGELOG.md'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -171,7 +171,7 @@ jobs:
 
       - name: Release
         working-directory: packages/icons/
-        run: npx -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/npm -p @semantic-release/github -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release --tagFormat '@ember-elements/icons@${version}'  --changelogFile 'CHANGELOG.md'
+        run: npx -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/npm -p @semantic-release/github -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release --tagFormat '@ember-elements/icons1@${version}'  --changelogFile 'CHANGELOG.md'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

@@ -1,5 +1,5 @@
 {
-  "name": "@ember-elements/icons123",
+  "name": "@ember-elements/icons124",
   "version": "0.0.3",
   "description": "Fonts, icons, and css files for creating and displaying icons.",
   "keywords": [
@@ -138,9 +138,41 @@
   "bugs": {
     "url": "https://github.com/LowBP/ember-elements/issues"
   },
- "release": {
+  "release": {
     "branches": [
       "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": true
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "message": "chore(release/@ember-elements/icons): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false
+        }
+      ]
     ]
   },
   "publishConfig": {

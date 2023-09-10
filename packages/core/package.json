@@ -40,7 +40,7 @@
     "storybook": "start-storybook -p 6006 -s dist,.storybook/static",
     "build-storybook": "export NODE_OPTIONS=--openssl-legacy-provider && ember build --environment test && build-storybook -s dist,.storybook/static",
     "chromatic": "npx chromatic --project-token",
-    "prepublishOnly": "rm -f tsconfig.tsbuildinfo && rm -rf stories storybook-static .storybook .vscode"
+    "prepublishOnly": "rm -f tsconfig.tsbuildinfo CHANGELOG.md && rm -rf stories storybook-static .storybook .vscode"
   },
   "dependencies": {
     "@ember-elements/icons": "^0.0.3",

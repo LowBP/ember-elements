@@ -2,5 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 yarn workspace @ember-elements/core123 lint
-yarn workspace @ember-elements/icons123 lint
+yarn workspace @ember-elements/icons124 lint
 yarn commitlint --edit $1

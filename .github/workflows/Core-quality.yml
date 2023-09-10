@@ -148,32 +148,32 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  # publish-icons:
-  #   name: Release Icons
-  #   timeout-minutes: 5
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main'
-  #   needs: 
-  #      - publish-core
-  #   # needs:
-  #     # - tests
-  #     # - lint
-  #     # - try-scenarios
-  #     # - commits
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: volta-cli/action@v1
-  #       with:
-  #         node-version: 18
-  #     - name: Install
-  #       working-directory: packages/icons/
-  #       run: git pull && yarn install
+  publish-icons:
+    name: Release Icons
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: 
+       - publish-core
+    # needs:
+      # - tests
+      # - lint
+      # - try-scenarios
+      # - commits
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v1
+        with:
+          node-version: 18
+      - name: Install
+        working-directory: packages/icons/
+        run: git pull && yarn install
 
-  #     - name: Release
-  #       working-directory: packages/icons/
-  #       run: npx -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/npm -p @semantic-release/github -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release --tagFormat '@ember-elements/icons@${version}'  --changelogFile 'CHANGELOG.md'
-  #       env:
-  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  #         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Release
+        working-directory: packages/icons/
+        run: npx -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/npm -p @semantic-release/github -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release --tagFormat '@ember-elements/icons@${version}'  --changelogFile 'CHANGELOG.md'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 

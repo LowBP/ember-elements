@@ -1,9 +1,8 @@
 ## [1.0.1](https://github.com/LowBP/ember-elements/compare/@ember-elements/core1@1.0.0...@ember-elements/core1@1.0.1) (2023-09-12)
 
-
 ### Bug Fixes
 
-* release issues ([b30e46d](https://github.com/LowBP/ember-elements/commit/b30e46dcbfdcd05f45047ce1ea5cd121157278f2))
+- release issues ([b30e46d](https://github.com/LowBP/ember-elements/commit/b30e46dcbfdcd05f45047ce1ea5cd121157278f2))
 
 # 1.0.0 (2023-09-10)
 
